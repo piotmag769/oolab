@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Vector2dTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-21T14:02:41" hostname="d17-327e-pc-08.ipa.ki.agh.edu.pl" time="0.014">
+  <properties/>
+  <testcase name="test_toString()" classname="Vector2dTest" time="0.014"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
