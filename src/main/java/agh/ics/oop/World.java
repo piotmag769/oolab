@@ -16,6 +16,16 @@ public class World {
         Vector2d position2 = new Vector2d(-2,1);
         System.out.println(position2);
         System.out.println(position1.add(position2));
+
+        Animal Pufu = new Animal();
+
+        Pufu.move(MoveDirection.RIGHT);
+        Pufu.move(MoveDirection.FORWARD);
+
+        Pufu.move(MoveDirection.FORWARD);
+        Pufu.move(MoveDirection.FORWARD);
+
+        System.out.println(Pufu);
     }
 
 
