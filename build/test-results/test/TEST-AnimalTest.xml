@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AnimalTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-28T22:54:40" hostname="DESKTOP-S29U9S6" time="0.025">
+  <properties/>
+  <testcase name="move_test()" classname="AnimalTest" time="0.025"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

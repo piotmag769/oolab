@@ -1,5 +1,7 @@
 package agh.ics.oop;
 
+import java.util.ArrayList;
+
 public class World {
 
     public static void main(String[] args)
@@ -19,11 +21,9 @@ public class World {
 
         Animal Pufu = new Animal();
 
-        Pufu.move(MoveDirection.RIGHT);
-        Pufu.move(MoveDirection.FORWARD);
-
-        Pufu.move(MoveDirection.FORWARD);
-        Pufu.move(MoveDirection.FORWARD);
+        ArrayList <MoveDirection> animal_moves = OptionParser.parse(new String[]{"r", "f", "f", "g", "f"});
+        for (MoveDirection a_move: animal_moves)
+            Pufu.move(a_move);
 
         System.out.println(Pufu);
     }
