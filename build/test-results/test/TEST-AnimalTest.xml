@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnimalTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-28T22:54:40" hostname="DESKTOP-S29U9S6" time="0.025">
+<testsuite name="AnimalTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-04T13:58:50" hostname="d17-327e-pc-08.ipa.ki.agh.edu.pl" time="0.021">
   <properties/>
-  <testcase name="move_test()" classname="AnimalTest" time="0.025"/>
+  <testcase name="move_test()" classname="AnimalTest" time="0.021"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
