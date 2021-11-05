@@ -1,11 +1,12 @@
 package agh.ics.oop;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RectangularMap implements IWorldMap{
 
-    int width, height;
-    ArrayList<Animal> animals = new ArrayList<>();
+    private int width, height;
+    private List<Animal> animals = new ArrayList<>();
 
     public RectangularMap(int width, int height)
     {
@@ -18,7 +19,7 @@ public class RectangularMap implements IWorldMap{
     {
         Vector2d upper_corner = new Vector2d(this.width, this.height);
         Vector2d lower_corner = new Vector2d(0, 0);
-        return this.isOccupied(position) && position.upperRight(upper_corner).equals(upper_corner) && position.lowerLeft(lower_corner).equals(lower_corner);
+        return !this.isOccupied(position) && position.upperRight(upper_corner).equals(upper_corner) && position.lowerLeft(lower_corner).equals(lower_corner);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class RectangularMap implements IWorldMap{
     @Override
     public boolean isOccupied(Vector2d position)
     {
-        if (animals.size() != 0)
+        if (this.animals.size() != 0)
             for(Animal animal: this.animals)
             {
                 if (animal.isAt(position))
@@ -47,7 +48,7 @@ public class RectangularMap implements IWorldMap{
 
     @Override
     public Object objectAt(Vector2d position) {
-        if (animals.size() != 0)
+        if (this.animals.size() != 0)
             for(Animal animal: this.animals)
             {
                 if (animal.isAt(position))

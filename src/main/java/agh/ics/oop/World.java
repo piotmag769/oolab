@@ -1,5 +1,6 @@
 package agh.ics.oop;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class World {
@@ -19,13 +20,21 @@ public class World {
         System.out.println(position2);
         System.out.println(position1.add(position2));
 
-        Animal Pufu = new Animal();
+/** doesn't work anymore after modyfying move with canMove usage - in need to run try: "git checkout tags/lab3 -b lab3_branch"**/
+//        Animal Pufu = new Animal();
+//
+//        ArrayList <MoveDirection> animal_moves = OptionParser.parse(new String[]{"r", "f", "f", "g", "f"});
+//        for (MoveDirection a_move: animal_moves)
+//            Pufu.move(a_move);
+//
+//        System.out.println(Pufu);
 
-        ArrayList <MoveDirection> animal_moves = OptionParser.parse(new String[]{"r", "f", "f", "g", "f"});
-        for (MoveDirection a_move: animal_moves)
-            Pufu.move(a_move);
-
-        System.out.println(Pufu);
+        ArrayList<MoveDirection> directions = OptionsParser.parse(args);
+        IWorldMap map = new RectangularMap(10, 5);
+        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
+        IEngine engine = new SimulationEngine(directions, map, positions);
+        System.out.println(map);
+        engine.run();
     }
 
 

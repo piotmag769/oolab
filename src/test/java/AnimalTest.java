@@ -1,5 +1,5 @@
 import agh.ics.oop.MoveDirection;
-import agh.ics.oop.OptionParser;
+import agh.ics.oop.OptionsParser;
 //import agh.ics.oop.Vector2d;
 import agh.ics.oop.Animal;
 
@@ -11,13 +11,15 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AnimalTest {
+
+    /** doesn't work anymore after modyfying move with canMove usage - in need to run try: "git checkout tags/lab3 -b lab3_branch"**/
     @Test
     public void move_test()
     {
         Animal Pufu = new Animal();
         //tab wejściowa - OK, orientacja i przemieszczenie - OK, mapa - OK
-        ArrayList <MoveDirection> animal_moves = OptionParser.parse(new String[]{"r", "f", "f", "g", "f", "r", "p", "b", "l"});
-        ArrayList <MoveDirection> check = new ArrayList<MoveDirection>(Arrays.asList(MoveDirection.RIGHT, MoveDirection.FORWARD, MoveDirection.FORWARD, MoveDirection.FORWARD, MoveDirection.RIGHT, MoveDirection.BACKWARD, MoveDirection.LEFT));
+        ArrayList <MoveDirection> animal_moves = OptionsParser.parse(new String[]{"r", "f", "f", "g", "f", "r", "p", "b", "l"});
+        ArrayList <MoveDirection> check = new ArrayList<>(Arrays.asList(MoveDirection.RIGHT, MoveDirection.FORWARD, MoveDirection.FORWARD, MoveDirection.FORWARD, MoveDirection.RIGHT, MoveDirection.BACKWARD, MoveDirection.LEFT));
 
         assertEquals(animal_moves, check);
 

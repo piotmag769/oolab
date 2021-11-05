@@ -2,7 +2,7 @@ package agh.ics.oop;
 
 import java.util.ArrayList;
 
-public class OptionParser {
+public class OptionsParser {
     public static ArrayList<MoveDirection> parse(String[] moves)
     {
         ArrayList<MoveDirection> animal_moves = new ArrayList<MoveDirection>();
