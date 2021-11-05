@@ -9,6 +9,7 @@ public class Vector2d {
         this.y = y;
     }
 
+    @Override
     public String toString()
     {
         return "(" + this.x + "," + this.y + ")";
@@ -44,6 +45,7 @@ public class Vector2d {
         return new Vector2d(this.x - other.x, this.y - other.y);
     }
 
+    @Override
     public boolean equals(Object other){
         if (this == other)
             return true;

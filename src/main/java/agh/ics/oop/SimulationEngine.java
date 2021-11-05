@@ -20,6 +20,12 @@ public class SimulationEngine implements IEngine{
                 map.place(zwierzomtko);
                 this.animals.add(zwierzomtko);
             }
+        System.out.println(map);
+    }
+
+    public List<Animal> list_animals()
+    {
+        return this.animals;
     }
 
     @Override

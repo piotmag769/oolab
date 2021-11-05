@@ -7,11 +7,13 @@ public class RectangularMap implements IWorldMap{
 
     private int width, height;
     private List<Animal> animals = new ArrayList<>();
+    MapVisualizer MV;
 
     public RectangularMap(int width, int height)
     {
         this.width = width;
         this.height = height;
+        this.MV= new MapVisualizer(this);
     }
 
     @Override
@@ -57,9 +59,9 @@ public class RectangularMap implements IWorldMap{
         return null;
     }
 
+    @Override
     public String toString()
     {
-        MapVisualizer MV= new MapVisualizer(this);
-        return MV.draw(new Vector2d(0,0), new Vector2d(this.width, this.height));
+        return this.MV.draw(new Vector2d(0,0), new Vector2d(this.width, this.height));
     }
 }
