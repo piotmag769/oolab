@@ -6,7 +6,7 @@ import java.util.List;
 public class RectangularMap implements IWorldMap{
 
     private int width, height;
-    private List<Animal> animals = new ArrayList<>();
+    private List<Animal> animals;
     MapVisualizer MV;
 
     public RectangularMap(int width, int height)
@@ -14,6 +14,7 @@ public class RectangularMap implements IWorldMap{
         this.width = width;
         this.height = height;
         this.MV= new MapVisualizer(this);
+        this.animals = new ArrayList<>();
     }
 
     @Override
