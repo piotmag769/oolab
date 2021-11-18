@@ -34,6 +34,10 @@ public class World {
         Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
         IEngine engine = new SimulationEngine(directions, map, positions);
         engine.run();
+
+        GrassField GF = new GrassField(10);
+        GF.place(new Animal(GF, new Vector2d(2, 2)));
+        System.out.println(GF);
     }
 
 
