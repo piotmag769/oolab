@@ -13,7 +13,7 @@ public class RectangularMapTest {
         Animal A = new Animal(RM, new Vector2d(4, 3));
         RM.place(A);
         assertFalse(RM.canMoveTo(new Vector2d(4, 6)));
-        assertTrue(RM.canMoveTo(new Vector2d(5, 3)));
+        assertTrue(RM.canMoveTo(new Vector2d(4, 4)));
     }
 
     @Test
@@ -22,7 +22,7 @@ public class RectangularMapTest {
         RectangularMap RM = new RectangularMap(5, 5);
         Animal A = new Animal(RM, new Vector2d(4, 3));
         RM.place(A);
-        assertEquals(A, RM.objectAt(A.tell_position()));
+        assertEquals(A, RM.objectAt(A.getPosition()));
     }
 
     @Test

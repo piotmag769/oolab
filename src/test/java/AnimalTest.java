@@ -1,10 +1,7 @@
 import agh.ics.oop.MoveDirection;
 import agh.ics.oop.OptionsParser;
-//import agh.ics.oop.Vector2d;
 import agh.ics.oop.Animal;
-
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 

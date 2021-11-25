@@ -18,7 +18,7 @@ public class Animal {
         this.position = initialPosition;
     }
 
-    public Vector2d tell_position()
+    public Vector2d getPosition()
     {
         return this.position;
     }

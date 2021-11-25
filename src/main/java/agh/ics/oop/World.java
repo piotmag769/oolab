@@ -1,6 +1,5 @@
 package agh.ics.oop;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class World {
@@ -9,16 +8,14 @@ public class World {
     {
         System.out.println("system wystartował");
 
-        Direction[] animal_move = convert(args);
-        run(animal_move);
-
-        System.out.println("system zakończył działanie");
-
-        Vector2d position1 = new Vector2d(1,2);
-        System.out.println(position1);
-        Vector2d position2 = new Vector2d(-2,1);
-        System.out.println(position2);
-        System.out.println(position1.add(position2));
+//        Direction[] animal_move = convert(args);
+//        run(animal_move);
+//
+//        Vector2d position1 = new Vector2d(1,2);
+//        System.out.println(position1);
+//        Vector2d position2 = new Vector2d(-2,1);
+//        System.out.println(position2);
+//        System.out.println(position1.add(position2));
 
 /** doesn't work anymore after modyfying move with canMove usage - in need to run try: "git checkout tags/lab3 -b lab3_branch"**/
 //        Animal Pufu = new Animal();
@@ -35,9 +32,11 @@ public class World {
         IEngine engine = new SimulationEngine(directions, map, positions);
         engine.run();
 
-        GrassField GF = new GrassField(10);
-        GF.place(new Animal(GF, new Vector2d(2, 2)));
+        GrassField GF = new GrassField(5);
+        GF.place(new Animal(GF, new Vector2d(-1, 6)));
         System.out.println(GF);
+
+        System.out.println("system zakończył działanie");
     }
 
 

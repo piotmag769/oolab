@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnimalTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-11-18T23:30:25" hostname="DESKTOP-S29U9S6" time="0.018">
+<testsuite name="AnimalTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-11-25T13:53:50" hostname="DESKTOP-S29U9S6" time="0.073">
   <properties/>
-  <testcase name="move_test()" classname="AnimalTest" time="0.018">
+  <testcase name="move_test()" classname="AnimalTest" time="0.073">
     <failure message="org.opentest4j.AssertionFailedError: expected: &lt;(2,2) WschĂłd&gt; but was: &lt;E&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;(2,2) WschĂłd&gt; but was: &lt;E&gt;
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
 	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1141)
-	at AnimalTest.move_test(AnimalTest.java:30)
+	at AnimalTest.move_test(AnimalTest.java:27)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

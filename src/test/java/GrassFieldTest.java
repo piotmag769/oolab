@@ -1,6 +1,5 @@
 import agh.ics.oop.Animal;
 import agh.ics.oop.GrassField;
-import agh.ics.oop.RectangularMap;
 import agh.ics.oop.Vector2d;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +23,7 @@ public class GrassFieldTest {
         GrassField RM = new GrassField(10);
         Animal A = new Animal(RM, new Vector2d(4, 3));
         RM.place(A);
-        assertEquals(A, RM.objectAt(A.tell_position()));
+        assertEquals(A, RM.objectAt(A.getPosition()));
     }
 
     @Test
