@@ -5,7 +5,7 @@ import java.util.List;
 
 import static java.lang.Math.sqrt;
 
-public class GrassField extends AbstractWorldMap implements IWorldMap{
+public class GrassField extends AbstractWorldMap implements IWorldMap, IPositionChangeObserver{
 
     private List<Grass> tufts = new ArrayList<>();
     public GrassField(int n)

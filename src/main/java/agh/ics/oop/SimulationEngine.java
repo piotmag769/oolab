@@ -21,7 +21,7 @@ public class SimulationEngine implements IEngine{
                 this.map.place(zwierzomtko);
                 this.animals.add(zwierzomtko);
             }
-        System.out.println(map);
+//        System.out.println(map);
     }
 
     public List<Animal> list_animals()
@@ -35,7 +35,7 @@ public class SimulationEngine implements IEngine{
         int n = this.animals.size();
         for(int i = 0; i < this.directions.size(); i++) {
             this.animals.get(i % n).move(this.directions.get(i));
-            System.out.println(this.map);
+//            System.out.println(this.map);
         }
     }
 }
