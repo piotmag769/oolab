@@ -4,7 +4,6 @@ import java.util.List;
 
 public abstract class AbstractWorldMap implements IWorldMap {
 
-    protected List<Grass> tufts = new ArrayList<>();
     protected List<Animal> animals = new ArrayList<>();
     protected MapVisualizer MV = new MapVisualizer(this);
     protected Vector2d upper_corner;
@@ -40,12 +39,6 @@ public abstract class AbstractWorldMap implements IWorldMap {
             for(Animal animal: this.animals)
                 if (animal.isAt(position))
                     return animal;
-
-        if (this instanceof GrassField)
-            if (this.tufts.size() != 0)
-                for(Grass grass: this.tufts)
-                    if (grass.getPosition().equals(position))
-                        return grass;
 
         return null;
     }

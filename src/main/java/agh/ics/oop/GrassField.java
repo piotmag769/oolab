@@ -1,9 +1,13 @@
 package agh.ics.oop;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Math.sqrt;
 
 public class GrassField extends AbstractWorldMap implements IWorldMap{
 
+    private List<Grass> tufts = new ArrayList<>();
     public GrassField(int n)
     {
         int x, y;
@@ -28,6 +32,22 @@ public class GrassField extends AbstractWorldMap implements IWorldMap{
         this.update_bounds();
     }
 
+
+    @Override
+    public Object objectAt(Vector2d position)
+    {
+        Object res = super.objectAt(position);
+
+        if (res != null)
+            return res;
+
+        if (this.tufts.size() != 0)
+            for(Grass grass: this.tufts)
+                if (grass.getPosition().equals(position))
+                    return grass;
+
+        return null;
+    }
 
     @Override
     public boolean canMoveTo(Vector2d position)

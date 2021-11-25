@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Vector2dTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-11-25T13:53:50" hostname="DESKTOP-S29U9S6" time="0.022">
+<testsuite name="Vector2dTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-11-25T14:08:51" hostname="DESKTOP-S29U9S6" time="0.023">
   <properties/>
   <testcase name="test_follows()" classname="Vector2dTest" time="0.001"/>
   <testcase name="test_opposite()" classname="Vector2dTest" time="0.001"/>
   <testcase name="test_add()" classname="Vector2dTest" time="0.001"/>
   <testcase name="test_equals()" classname="Vector2dTest" time="0.001"/>
-  <testcase name="test_lowerLeft()" classname="Vector2dTest" time="0.001"/>
-  <testcase name="test_substract()" classname="Vector2dTest" time="0.001"/>
-  <testcase name="test_toString()" classname="Vector2dTest" time="0.01"/>
+  <testcase name="test_lowerLeft()" classname="Vector2dTest" time="0.0"/>
+  <testcase name="test_substract()" classname="Vector2dTest" time="0.0"/>
+  <testcase name="test_toString()" classname="Vector2dTest" time="0.012"/>
   <testcase name="test_upperRight()" classname="Vector2dTest" time="0.001"/>
   <testcase name="test_preceeds()" classname="Vector2dTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>

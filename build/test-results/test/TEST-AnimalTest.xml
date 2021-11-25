@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnimalTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-11-25T13:53:50" hostname="DESKTOP-S29U9S6" time="0.073">
+<testsuite name="AnimalTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-11-25T14:08:51" hostname="DESKTOP-S29U9S6" time="0.076">
   <properties/>
-  <testcase name="move_test()" classname="AnimalTest" time="0.073">
+  <testcase name="move_test()" classname="AnimalTest" time="0.076">
     <failure message="org.opentest4j.AssertionFailedError: expected: &lt;(2,2) WschĂłd&gt; but was: &lt;E&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;(2,2) WschĂłd&gt; but was: &lt;E&gt;
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
 	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
