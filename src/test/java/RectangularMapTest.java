@@ -1,4 +1,5 @@
 import agh.ics.oop.Animal;
+import agh.ics.oop.GrassField;
 import agh.ics.oop.RectangularMap;
 import agh.ics.oop.Vector2d;
 import org.junit.jupiter.api.Test;
@@ -32,5 +33,20 @@ public class RectangularMapTest {
         Animal A = new Animal(RM, new Vector2d(4, 3));
         RM.place(A);
         assertTrue(RM.isOccupied(new Vector2d(4,3)));
+    }
+
+    @Test
+    void place_exception() throws IllegalArgumentException
+    {
+        GrassField RM = new GrassField(10);
+        Animal A = new Animal(RM, new Vector2d(4, 3));
+        RM.place(A);
+        try {
+            RM.place(A);
+        }
+        catch (IllegalArgumentException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }

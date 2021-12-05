@@ -1,13 +1,11 @@
 package agh.ics.oop;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static java.lang.Math.sqrt;
 
-public class GrassField extends AbstractWorldMap implements IWorldMap, IPositionChangeObserver{
+public class GrassField extends AbstractWorldMap{
 
-    private List<Grass> tufts = new ArrayList<>();
+    public MapBoundary boundary = new MapBoundary();
+
     public GrassField(int n)
     {
         int x, y;
@@ -26,7 +24,9 @@ public class GrassField extends AbstractWorldMap implements IWorldMap, IPosition
                 temp = new Vector2d(x, y);
             } while(isOccupied(temp));
 
-            this.tufts.add(new Grass(temp));
+            Grass grass = new Grass(temp);
+            this.hashmap.put(temp, grass);
+            this.boundary.add_to_sets(grass);
         }
 
         this.update_bounds();
@@ -34,19 +34,18 @@ public class GrassField extends AbstractWorldMap implements IWorldMap, IPosition
 
 
     @Override
-    public Object objectAt(Vector2d position)
+    public boolean place(Animal animal)
     {
-        Object res = super.objectAt(position);
+        boolean check = super.place(animal);
 
-        if (res != null)
-            return res;
+        if (check)
+        {
+            // no need to remove from set, as potential grass is the same as new animal in terms of position
+            boundary.add_to_sets(animal);
+            animal.addObserver(boundary);
+        }
 
-        if (this.tufts.size() != 0)
-            for(Grass grass: this.tufts)
-                if (grass.getPosition().equals(position))
-                    return grass;
-
-        return null;
+        return true;
     }
 
     @Override
@@ -60,18 +59,7 @@ public class GrassField extends AbstractWorldMap implements IWorldMap, IPosition
     @Override
     public void update_bounds()
     {
-        if (this.animals.size() != 0)
-            for (Animal animal : this.animals)
-            {
-                this.lower_corner = this.lower_corner.lowerLeft(animal.getPosition());
-                this.upper_corner = this.upper_corner.upperRight(animal.getPosition());
-            }
-
-        if (this.tufts.size() != 0)
-            for(Grass grass: this.tufts)
-            {
-                this.lower_corner = this.lower_corner.lowerLeft(grass.getPosition());
-                this.upper_corner = this.upper_corner.upperRight(grass.getPosition());
-            }
+        this.upper_corner = this.boundary.getUpperCorner();
+        this.lower_corner = this.boundary.getLowerCorner();
     }
 }

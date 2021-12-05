@@ -3,8 +3,8 @@ package agh.ics.oop;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Animal {
-    private Vector2d position = new Vector2d(2, 2);
+public class Animal extends AbstractWorldMapElement{
+//    private Vector2d position = new Vector2d(2, 2);
     private MapDirection orientation = MapDirection.NORTH;
     private IWorldMap map;
     private List<IPositionChangeObserver> observers= new ArrayList<>();
@@ -14,19 +14,12 @@ public class Animal {
     public Animal(IWorldMap map)
     {
         this.map = map;
-        this.addObserver((IPositionChangeObserver) map);
     }
 
-    public Animal(IWorldMap map, Vector2d initialPosition)
+    public Animal(IWorldMap map, Vector2d position)
     {
         this.map = map;
-        this.position = initialPosition;
-        this.addObserver((IPositionChangeObserver) map);
-    }
-
-    public Vector2d getPosition()
-    {
-        return this.position;
+        this.position = position;
     }
 
 //    public String toString()
@@ -81,8 +74,7 @@ public class Animal {
 
     private void positionChanged(Vector2d oldPosition, Vector2d newPosition)
     {
-        if (this.observers.size() != 0)
-            for(IPositionChangeObserver observer: observers)
-                observer.positionChanged(oldPosition, newPosition);
+        for(IPositionChangeObserver observer: observers)
+            observer.positionChanged(this, oldPosition, newPosition);
     }
 }

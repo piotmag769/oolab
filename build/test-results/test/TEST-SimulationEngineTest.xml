@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SimulationEngineTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-25T15:03:16" hostname="DESKTOP-S29U9S6" time="0.035">
+<testsuite name="SimulationEngineTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-05T02:47:58" hostname="DESKTOP-S29U9S6" time="0.039">
   <properties/>
-  <testcase name="confront_animals_test()" classname="SimulationEngineTest" time="0.032"/>
-  <testcase name="walk_to_edges_test()" classname="SimulationEngineTest" time="0.001"/>
+  <testcase name="confront_animals_test()" classname="SimulationEngineTest" time="0.036"/>
+  <testcase name="walk_to_edges_test()" classname="SimulationEngineTest" time="0.0"/>
+  <testcase name="option_parser_exception()" classname="SimulationEngineTest" time="0.0"/>
   <testcase name="walk_to_corners_test()" classname="SimulationEngineTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
+  <system-out><![CDATA[u is not legal move specification
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

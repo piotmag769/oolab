@@ -34,4 +34,20 @@ public class GrassFieldTest {
         RM.place(A);
         assertTrue(RM.isOccupied(new Vector2d(4,3)));
     }
+
+    @Test
+    void place_exception() throws IllegalArgumentException
+    {
+        GrassField RM = new GrassField(10);
+        Animal A = new Animal(RM, new Vector2d(4, 3));
+        RM.place(A);
+        try
+        {
+            RM.place(A);
+        }
+        catch (IllegalArgumentException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
 }

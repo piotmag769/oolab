@@ -1,13 +1,9 @@
 package agh.ics.oop;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
 
-    protected Map<Vector2d, Animal> animals_hash = new HashMap<>();
-    protected List<Animal> animals = new ArrayList<>();
+    protected Map<Vector2d, IMapElement> hashmap = new LinkedHashMap<>();
     protected MapVisualizer MV = new MapVisualizer(this);
     protected Vector2d upper_corner;
     protected Vector2d lower_corner;
@@ -22,12 +18,13 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
 
         if (this.canMoveTo(position))
         {
-            this.animals.add(animal);
-            this.animals_hash.put(position, animal);
+            animal.addObserver(this);
+            this.hashmap.remove(position);
+            this.hashmap.put(position, animal);
             return true;
         }
 
-        return false;
+        throw new IllegalArgumentException(animal.getPosition().toString() + " is not legal position");
     }
 
 
@@ -39,15 +36,15 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
 
     public Object objectAt(Vector2d position)
     {
-        return this.animals_hash.get(position);
+        return this.hashmap.get(position);
     }
 
     @Override
-    public void positionChanged(Vector2d oldPosition, Vector2d newPosition)
+    public void positionChanged(IMapElement element, Vector2d oldPosition, Vector2d newPosition)
     {
-        Animal animal = this.animals_hash.get(oldPosition);
-        this.animals_hash.remove(oldPosition);
-        this.animals_hash.put(newPosition, animal);
+        this.hashmap.remove(oldPosition);
+        this.hashmap.remove(newPosition);  // remove possible grass
+        this.hashmap.put(newPosition, element);
     }
 
     @Override
@@ -55,5 +52,15 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     {
         this.update_bounds();
         return this.MV.draw(this.lower_corner, this.upper_corner);
+    }
+
+    public Vector2d get_upper_corner()
+    {
+        return upper_corner;
+    }
+
+    public Vector2d get_lower_corner()
+    {
+        return lower_corner;
     }
 }
