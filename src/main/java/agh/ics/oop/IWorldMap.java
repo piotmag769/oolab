@@ -45,4 +45,9 @@ public interface IWorldMap {
      * @return Object or null if the position is not occupied.
      */
     Object objectAt(Vector2d position);
+
+    // new methods
+    Vector2d get_upper_corner();
+
+    Vector2d get_lower_corner();
 }

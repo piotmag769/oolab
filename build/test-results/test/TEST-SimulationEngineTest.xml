@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SimulationEngineTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-05T02:47:58" hostname="DESKTOP-S29U9S6" time="0.039">
+<testsuite name="SimulationEngineTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-12-05T20:57:12" hostname="DESKTOP-S29U9S6" time="0.005">
   <properties/>
-  <testcase name="confront_animals_test()" classname="SimulationEngineTest" time="0.036"/>
+  <testcase name="confront_animals_test()" classname="SimulationEngineTest" time="0.002"/>
   <testcase name="walk_to_edges_test()" classname="SimulationEngineTest" time="0.0"/>
   <testcase name="option_parser_exception()" classname="SimulationEngineTest" time="0.0"/>
   <testcase name="walk_to_corners_test()" classname="SimulationEngineTest" time="0.001"/>
