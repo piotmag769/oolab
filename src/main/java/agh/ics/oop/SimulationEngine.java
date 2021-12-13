@@ -12,7 +12,7 @@ public class SimulationEngine implements IEngine, Runnable, IPositionChangeObser
     private IWorldMap map;
     private List<Animal> animals;
     private App app;
-
+    private int i = 0;
 
     public SimulationEngine(List<MoveDirection> directions, IWorldMap map, Vector2d[] positions)
     {
@@ -40,38 +40,36 @@ public class SimulationEngine implements IEngine, Runnable, IPositionChangeObser
     public void run()
     {
         int n = this.animals.size();
-        for(int i = 0; i < this.directions.size(); i++) {
-            this.animals.get(i % n).move(this.directions.get(i));
 
-        }
+        this.animals.get(i % n).move(this.directions.get(i));
+
+
+        app.grid.setGridLinesVisible(false);
+        app.grid.getChildren().clear();
+
+        app.grid.setGridLinesVisible(true);
+        app.create_and_add_axis_labels(app.grid);
+
+        app.create_and_add_elements(app.grid);
+
+
         System.out.println(this.map);
+        i++;
     }
 
     @Override
     public void positionChanged(IMapElement element, Vector2d oldPosition, Vector2d newPosition)
     {
 
-        Platform.runLater(() -> {
-
-            app.grid.setGridLinesVisible(false);
-            app.grid.getChildren().clear();
-
-            app.grid.setGridLinesVisible(true);
-            app.create_and_add_axis_labels(app.grid);
-
-            app.create_and_add_elements(app.grid);
-
-            try {
-                Thread.sleep(1000);
-                System.out.println("why the fuck dont u sleep?");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
     public void setApp(App app)
     {
         this.app = app;
+    }
+
+    public int getDirectionLength()
+    {
+        return this.directions.size();
     }
 }

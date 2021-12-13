@@ -22,7 +22,7 @@ public class App extends Application{
     private int y_len;
 
     private IWorldMap map;
-    private int moveDelay = 2000;
+    private int moveDelay = 1000;
     private SimulationEngine engine;
     public GridPane grid;
     public Stage primaryStage;
@@ -75,7 +75,22 @@ public class App extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        Thread engineThread = new Thread(engine);
+        Thread engineThread = new Thread(new Runnable(){
+            @Override
+            public void run()
+            {
+                for(int i = 0; i < engine.getDirectionLength(); i++)
+                {
+                    try {
+                        Thread.sleep(moveDelay);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Platform.runLater(engine);
+                }
+            }
+        }
+        );
 
         engineThread.setDaemon(true);
         engineThread.start();
