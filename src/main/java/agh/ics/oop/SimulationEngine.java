@@ -2,12 +2,13 @@ package agh.ics.oop;
 
 import agh.ics.oop.gui.App;
 import javafx.application.Platform;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimulationEngine implements IEngine, Runnable, IPositionChangeObserver{
+public class SimulationEngine implements IEngine, Runnable{
     private List<MoveDirection> directions;
     private IWorldMap map;
     private List<Animal> animals;
@@ -24,7 +25,6 @@ public class SimulationEngine implements IEngine, Runnable, IPositionChangeObser
             for (Vector2d position: positions)
             {
                 Animal zwierzomtko = new Animal(map, position);
-                zwierzomtko.addObserver(this);
                 this.map.place(zwierzomtko);
                 this.animals.add(zwierzomtko);
             }
@@ -43,7 +43,6 @@ public class SimulationEngine implements IEngine, Runnable, IPositionChangeObser
 
         this.animals.get(i % n).move(this.directions.get(i));
 
-
         app.grid.setGridLinesVisible(false);
         app.grid.getChildren().clear();
 
@@ -52,15 +51,8 @@ public class SimulationEngine implements IEngine, Runnable, IPositionChangeObser
 
         app.create_and_add_elements(app.grid);
 
-
         System.out.println(this.map);
         i++;
-    }
-
-    @Override
-    public void positionChanged(IMapElement element, Vector2d oldPosition, Vector2d newPosition)
-    {
-
     }
 
     public void setApp(App app)
@@ -71,5 +63,11 @@ public class SimulationEngine implements IEngine, Runnable, IPositionChangeObser
     public int getDirectionLength()
     {
         return this.directions.size();
+    }
+
+    public void setDirections(List<MoveDirection> directions)
+    {
+        this.directions = directions;
+        this.i = 0;
     }
 }

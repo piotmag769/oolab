@@ -3,15 +3,17 @@ package agh.ics.oop.gui;
 import agh.ics.oop.*;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
+import javafx.scene.control.*;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import java.util.ArrayList;
+import java.util.List;
 
 public class App extends Application{
     // temporary fields to simplify the code
@@ -75,25 +77,25 @@ public class App extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        Thread engineThread = new Thread(new Runnable(){
-            @Override
-            public void run()
-            {
-                for(int i = 0; i < engine.getDirectionLength(); i++)
-                {
-                    try {
-                        Thread.sleep(moveDelay);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Platform.runLater(engine);
-                }
-            }
-        }
-        );
-
-        engineThread.setDaemon(true);
-        engineThread.start();
+//        Thread engineThread = new Thread(new Runnable(){
+//            @Override
+//            public void run()
+//            {
+//                for(int i = 0; i < engine.getDirectionLength(); i++)
+//                {
+//                    try {
+//                        Thread.sleep(moveDelay);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Platform.runLater(engine);
+//                }
+//            }
+//        }
+//        );
+//
+//        engineThread.setDaemon(true);
+//        engineThread.start();
     }
 
     public void create_and_add_axis_labels(GridPane grid)
@@ -104,7 +106,7 @@ public class App extends Application{
         grid.add(label1, 0, 0);
 
         // labeling y axis
-        for(int i = 0; i < y_len + 1; i++)
+        for(int i = 0; i < y_len; i++)
         {
             Label label = new Label(Integer.toString(upper_corner.y - i));
             GridPane.setHalignment(label, HPos.CENTER);
@@ -112,7 +114,7 @@ public class App extends Application{
         }
 
         // labeling x axis
-        for(int i = 0; i < x_len + 1; i++)
+        for(int i = 0; i < x_len; i++)
         {
             Label label = new Label(Integer.toString(i + lower_corner.x));
             GridPane.setHalignment(label, HPos.CENTER);
@@ -122,6 +124,7 @@ public class App extends Application{
 
     public void create_and_add_elements(GridPane grid)
     {
+
         // filling map
         for(int i = 0; i < x_len; i++)
             for(int j = 0; j < y_len; j++)
@@ -136,11 +139,54 @@ public class App extends Application{
                     grid.add(node, i + 1, y_len - j);
                 }
             }
+
+        TextField textField = new TextField();
+        grid.add(textField, 1, y_len + 1, 3, 1);
+
+        Button btnStart=new Button("\u25B6");
+        GridPane.setHalignment(btnStart, HPos.CENTER);
+        grid.add(btnStart, 0, y_len + 1);
+
+        btnStart.setOnAction(new EventHandler<javafx.event.ActionEvent>()
+            {
+                @Override public void handle (ActionEvent e)
+                {
+                    try {
+                        String[] args = textField.getText().split(" ");
+                        engine.setDirections(OptionsParser.parse(List.of(args)));
+                        Thread engineThread = new Thread(new Runnable(){
+                            @Override
+                            public void run()
+                            {
+                                for(int i = 0; i < engine.getDirectionLength(); i++)
+                                {
+                                    try {
+                                        Thread.sleep(moveDelay);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                    Platform.runLater(engine);
+                                }
+                            }
+                        }
+                        );
+
+                        engineThread.setDaemon(true);
+                        engineThread.start();
+                    }
+                    catch(IllegalArgumentException exception)
+                    {
+                        System.out.println(exception.getMessage());
+                    }
+                }
+            }
+        );
+
     }
 
     public void set_col_row_sizes(GridPane grid)
     {
-        //setting rows' sizes
+        //setting columns' sizes
         for(int i = 0; i < x_len + 1; i++)
         {
             ColumnConstraints col1 = new ColumnConstraints();
@@ -149,13 +195,14 @@ public class App extends Application{
             grid.getColumnConstraints().add(col1);
         }
 
-        // setting columns' sizes
-        for(int i = 0; i < y_len + 1; i++)
+        // setting rows' sizes
+        for(int i = 0; i < y_len + 1 + 1 /* plus button row */; i++)
         {
             RowConstraints row1 = new RowConstraints();
             row1.setPercentHeight(100);
 //            row1.setFillHeight(Boolean.TRUE);
             grid.getRowConstraints().add(row1);
+
         }
     }
 }
