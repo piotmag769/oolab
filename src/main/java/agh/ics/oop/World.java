@@ -2,6 +2,7 @@ package agh.ics.oop;
 
 import agh.ics.oop.gui.*;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 
 
 public class World {
@@ -18,7 +19,7 @@ public class World {
 
     static Direction[] convert(String[] args) throws IllegalArgumentException
     {
-        Direction[] animal_move = new Direction[args.length];  // VSA - is that okay?
+        Direction[] animal_move = new Direction[args.length];  // VLA - is that okay?
 
         for (int i = 0; i < args.length; i++)
         {

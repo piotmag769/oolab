@@ -5,19 +5,22 @@ import java.util.List;
 
 public class Animal extends AbstractWorldMapElement{
 //    private Vector2d position = new Vector2d(2, 2);
-    private MapDirection orientation = MapDirection.NORTH;
     private IWorldMap map;
     private List<IPositionChangeObserver> observers= new ArrayList<>();
 
-    public Animal() {}
+    public Animal() {
+        orientation = MapDirection.NORTH;
+    }
 
     public Animal(IWorldMap map)
     {
+        orientation = MapDirection.NORTH;
         this.map = map;
     }
 
     public Animal(IWorldMap map, Vector2d position)
     {
+        orientation = MapDirection.NORTH;
         this.map = map;
         this.position = position;
     }
