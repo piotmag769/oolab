@@ -147,37 +147,19 @@ public class App extends Application{
         GridPane.setHalignment(btnStart, HPos.CENTER);
         grid.add(btnStart, 0, y_len + 1);
 
-        btnStart.setOnAction(new EventHandler<javafx.event.ActionEvent>()
-            {
-                @Override public void handle (ActionEvent e)
-                {
-                    try {
-                        String[] args = textField.getText().split(" ");
-                        engine.setDirections(OptionsParser.parse(List.of(args)));
-                        Thread engineThread = new Thread(new Runnable(){
-                            @Override
-                            public void run()
-                            {
-                                for(int i = 0; i < engine.getDirectionLength(); i++)
-                                {
-                                    try {
-                                        Thread.sleep(moveDelay);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                    Platform.runLater(engine);
-                                }
-                            }
-                        }
-                        );
+        btnStart.setOnAction(e -> {
+                try {
+                    String[] args = textField.getText().split(" ");
+                    engine.setDirections(OptionsParser.parse(List.of(args)));
 
-                        engineThread.setDaemon(true);
-                        engineThread.start();
-                    }
-                    catch(IllegalArgumentException exception)
-                    {
-                        System.out.println(exception.getMessage());
-                    }
+                    Thread engineThread = new Thread(engine);
+
+                    engineThread.setDaemon(true);
+                    engineThread.start();
+                }
+                catch(IllegalArgumentException exception)
+                {
+                    System.out.println(exception.getMessage());
                 }
             }
         );

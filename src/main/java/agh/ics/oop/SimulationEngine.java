@@ -13,7 +13,6 @@ public class SimulationEngine implements IEngine, Runnable{
     private IWorldMap map;
     private List<Animal> animals;
     private App app;
-    private int i = 0;
 
     public SimulationEngine(List<MoveDirection> directions, IWorldMap map, Vector2d[] positions)
     {
@@ -41,18 +40,29 @@ public class SimulationEngine implements IEngine, Runnable{
     {
         int n = this.animals.size();
 
-        this.animals.get(i % n).move(this.directions.get(i));
+        for(int i = 0; i < this.directions.size(); i++)
+        {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
 
-        app.grid.setGridLinesVisible(false);
-        app.grid.getChildren().clear();
+            int finalI = i;
+            Platform.runLater(() -> {
+                this.animals.get(finalI % n).move(this.directions.get(finalI));
 
-        app.grid.setGridLinesVisible(true);
-        app.create_and_add_axis_labels(app.grid);
+                app.grid.setGridLinesVisible(false);
+                app.grid.getChildren().clear();
 
-        app.create_and_add_elements(app.grid);
+                app.grid.setGridLinesVisible(true);
+                app.create_and_add_axis_labels(app.grid);
 
-        System.out.println(this.map);
-        i++;
+                app.create_and_add_elements(app.grid);
+
+                System.out.println(this.map);}
+            );
+        }
     }
 
     public void setApp(App app)
@@ -68,6 +78,5 @@ public class SimulationEngine implements IEngine, Runnable{
     public void setDirections(List<MoveDirection> directions)
     {
         this.directions = directions;
-        this.i = 0;
     }
 }
